@@ -9,6 +9,12 @@ import dotenv, { DotenvParseOutput } from 'dotenv'
 //   base: '/shige',
 //   plugins: [vue()]
 // })
+interface EnvConfig extends DotenvParseOutput {
+  VITE_HOST: string;
+  VITE_PORT: number;
+  VITE_BASE_URL: string;
+  VITE_PROXY_DOMAIN: string;
+}
 
 export default defineConfig((mode) => {
   // 拼接当前环境文件名（这里使用了dotenv）
@@ -17,7 +23,7 @@ export default defineConfig((mode) => {
 
   let server: CommonServerOptions = {}
   const envData = fs.readFileSync(curEnvFileName)
-  const envMap: DotenvParseOutput = dotenv.parse(envData)
+  const envMap = dotenv.parse<EnvConfig>(envData)
   console.log(envMap)
   
   if (mode.mode === 'development') {
@@ -34,7 +40,12 @@ export default defineConfig((mode) => {
     console.log('开发环境', server)
   }
   else if (mode.mode === 'production') {
-    console.log('生产环境')
+    server = {
+      host: envMap.VITE_HOST,
+      port: envMap.VITE_PORT
+    }
+    // 线上不可以用代理转发，必须用nginx
+    console.log('生产环境', server)
   }
   return {
     plugins: [vue()]
