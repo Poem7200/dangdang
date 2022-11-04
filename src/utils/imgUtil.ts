@@ -1,14 +1,20 @@
 export class LmgUtil {
+  // 保存图片名称和绝对路径的映射关系
   static imgList: Record<string, string> = {}
   static loadAllLmg() {
     // 获取图片生成一个Record类型
-    const imgMap = import.meta.glob('../assets/**/*.png')
+    const imgMap: Record<string, any> = import.meta.glob('../assets/**/*.png')
 
-    let absolutePath: string = "" // 绝对路径
+    // console.log(imgMap)
+
+    let picName: string = ''
 
     for (let relativePath in imgMap) {
-      console.log(imgMap[relativePath].default)
       // 获取图片名
+      picName = relativePath.substring(relativePath.lastIndexOf("/") + 1)
+      console.log(picName)
+      // TODO: 绝对路径获取方式？
+      this.imgList[picName] = relativePath
     }
   }
 }
