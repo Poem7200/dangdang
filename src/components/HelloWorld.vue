@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { LmgUtil } from '../utils/imgUtil'
 
 defineProps<{ msg: string }>()
 
@@ -9,6 +10,8 @@ const count = ref(0)
 <template>
   <h1>{{ msg }}</h1>
 
+  <img :src="LmgUtil.getImg('test2')" alt="">
+  
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>

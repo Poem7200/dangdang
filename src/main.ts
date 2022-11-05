@@ -7,6 +7,6 @@ import { LmgUtil } from './utils/imgUtil';
 // 这里的环境优先从特定环境中找，否则去env里找，再找不到返回undefined
 // console.log(import.meta.env.VITE_username, import.meta.env.VITE_age, import.meta.env.test)
 
-LmgUtil.loadAllLmg()
+LmgUtil.storageImgList()
 
 createApp(App).mount('#app')
