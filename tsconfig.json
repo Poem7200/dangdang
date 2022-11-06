@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2021",
-    "useDefineForClassFields": true,
+    "target": "es2021", // 编译以后的文件使用何种标准
+    "useDefineForClassFields": true,  
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": true,
@@ -13,15 +13,13 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "typeRoots": ["node_modules/@types"],
-    "types": ["vite/client", "node"],
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
   },
-  "include": [ // T1
+  "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.vue",

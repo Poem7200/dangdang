@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { LmgUtil } from '../utils/imgUtil'
+import { LmgUtil } from '@/utils/imgUtil'
 
 defineProps<{ msg: string }>()
 
